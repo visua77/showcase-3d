@@ -1,13 +1,85 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,100&display=swap');
+
+*{
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+input {
+  display:block;
+}
+
+button {
+  display:block;
+}
+
+h1 {
+  font-size: 2.2rem;
+  letter-spacing: .3rem;
+}
+
+header {
+  width:100%;
+  height:6rem;
+  display: flex;
+  align-items: center;
+  padding:1rem;
+  background-color: rgba(0, 0, 0, .2);
+}
+
+.app {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top:3rem;
+  
+}
+
+.card {
+  width:400px;
+  height:350px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color:white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+  margin:1rem;
+  padding:1rem;
+  color:rgb(77, 77, 77);
+  border-radius: 8px;
+}
+
+.card img {
+  width:100%;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all ease-in-out .3s;
+}
+
+.card img:hover {
+  opacity: .5;
+}
+
+.modal {
+  display:none;
+}
+
+.modal__active {
+  display:flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width:100vw;
+  height:100vh;
+  background-color: rgba(0, 0, 0, .8);
+}
+
+.modal__img {
+  width:1280px;
+  cursor: pointer;
+  
 }
