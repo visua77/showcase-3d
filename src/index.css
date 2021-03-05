@@ -53,6 +53,15 @@ header {
   border-radius: 8px;
 }
 
+.delete__itm {
+  width:100%;
+  background-color: rgb(226, 226, 226);
+  display:flex;
+  justify-content: flex-end;
+  padding:.3rem;
+  cursor: pointer;
+}
+
 .card img {
   width:100%;
   border-radius: 5px;
