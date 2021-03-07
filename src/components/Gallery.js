@@ -61,6 +61,22 @@ const Gallery = ()=> {
         }
     }
 
+    const handleEdit = (clicked)=> {
+        //console.log(clicked)
+        //setNewImage(clicked.img)
+        //setDscrp(clicked.descr)
+        
+        const updArray = content.map( itm => {
+            if(itm.id === clicked.id) {
+                return {...itm, 
+                    img: 'tst'  
+                }
+            }
+            return itm
+    })
+        console.log(updArray)
+    }
+
     const handleDelete = (clicked)=> {
         const filterArray = content.filter(itm => itm.id !== clicked)
         console.log(filterArray)
@@ -72,21 +88,20 @@ const Gallery = ()=> {
     return(
         <div className="app">
         <form onSubmit={handleSubmit}>
-          <span>Image:</span><input placeholder="Type..."onChange={(e)=>setNewImage(e.target.value)}></input>
-          <textarea onChange={(e)=> setDscrp(e.target.value)}></textarea>
+          <input placeholder="Type..."onChange={(e)=>setNewImage(e.target.value)}value={newImage}></input>
+          <textarea onChange={(e)=> setDscrp(e.target.value)}value={descr}></textarea>
           <button>Add Image</button>
         </form>
         
-        <p>{newImage}</p>
-        <p>{descr}</p>
+    
             {/* mapping over our 'db' here */}
             {content.map(itm=> (
             <div className="card"key={itm.id}>
-              <span className="delete__itm"onClick={()=>handleDelete(itm.id)}>X</span>  
+              <span className="delete__itm"onClick={()=> handleDelete(itm.id)}>X</span>  
               <p><img src={itm.img} alt="#" onClick={()=> {
                 setProj(itm.img)
                 setModal(prev => !prev)}}/></p>
-              <p>{itm.descr}</p>
+              <p>{itm.descr} <span className="edit__itm"onClick={()=> handleEdit(itm)}>...</span></p>
             </div>
           ))}
           <div className={modal===false ? 'modal' : 'modal__active'}  onClick={()=> setModal(false)}>

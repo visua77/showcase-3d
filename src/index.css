@@ -10,10 +10,30 @@
 
 input {
   display:block;
+  width:290px;
+  font-size: 1.3rem;
+  padding: .3rem;
+  border:none;
+}
+
+textarea {
+  width:290px;
+  height:130px;
+  background-color: rgba(0, 0, 0, .1);
+  resize: none;
+  border:none;
+  padding:.3rem;
+  border-radius: 8px;
+  margin-top: .5rem;
+  margin-right: .5rem;
 }
 
 button {
   display:block;
+  padding:1rem;
+  border:none;
+  cursor: pointer;
+  margin-top: .5rem;
 }
 
 h1 {
@@ -51,6 +71,12 @@ header {
   padding:1rem;
   color:rgb(77, 77, 77);
   border-radius: 8px;
+}
+
+.edit__itm {
+  display: flex;
+  background-color: silver;
+  cursor: pointer;
 }
 
 .delete__itm {
