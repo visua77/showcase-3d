@@ -96,7 +96,7 @@ const Gallery = ()=> {
     return(
         <div className="app">
             <form>
-                <input placeholder="Type..."onChange={(e)=>setNewImage(e.target.value)}value={newImage}></input>
+                <input placeholder="ImgName(/img/01.jpg)..."onChange={(e)=>setNewImage(e.target.value)}value={newImage}></input>
                 <textarea onChange={(e)=> setDscrp(e.target.value)}value={descr}></textarea>
                 
             </form>
