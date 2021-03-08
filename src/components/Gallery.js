@@ -8,7 +8,11 @@ const Gallery = ()=> {
     
 
     const [newImage, setNewImage] = useState('')
+    console.log(newImage)
     const [descr, setDscrp] = useState('')
+    const [edit, setEdit] = useState(false)
+    const [id, setID] = useState('')
+    
   
     const [content, setContent] = useState([
         {
@@ -61,25 +65,29 @@ const Gallery = ()=> {
         }
     }
 
-    const handleEdit = (clicked)=> {
-        //console.log(clicked)
-        //setNewImage(clicked.img)
-        //setDscrp(clicked.descr)
+    const handleEdit = ()=> {
+        
+        setEdit(true)
+        console.log(newImage)
         
         const updArray = content.map( itm => {
-            if(itm.id === clicked.id) {
+            if(itm.id === id.id) {
                 return {...itm, 
-                    img: 'tst'  
+                    img: newImage,
+                    descr:descr  
                 }
             }
             return itm
     })
-        console.log(updArray)
+        setContent(updArray)
+        setEdit(false)
+        setNewImage('')
+        setDscrp('')
     }
 
     const handleDelete = (clicked)=> {
         const filterArray = content.filter(itm => itm.id !== clicked)
-        console.log(filterArray)
+        //console.log(filterArray)
         setContent(filterArray)
     }
 
@@ -87,25 +95,35 @@ const Gallery = ()=> {
 
     return(
         <div className="app">
-        <form onSubmit={handleSubmit}>
-          <input placeholder="Type..."onChange={(e)=>setNewImage(e.target.value)}value={newImage}></input>
-          <textarea onChange={(e)=> setDscrp(e.target.value)}value={descr}></textarea>
-          <button>Add Image</button>
-        </form>
+            <form>
+                <input placeholder="Type..."onChange={(e)=>setNewImage(e.target.value)}value={newImage}></input>
+                <textarea onChange={(e)=> setDscrp(e.target.value)}value={descr}></textarea>
+                
+            </form>
+            {edit===false ? <button onClick={handleSubmit}>Add Image</button> : <button onClick={()=>{
+                handleEdit()
+                }}>Edit project</button>}
         
     
             {/* mapping over our 'db' here */}
             {content.map(itm=> (
             <div className="card"key={itm.id}>
-              <span className="delete__itm"onClick={()=> handleDelete(itm.id)}>X</span>  
-              <p><img src={itm.img} alt="#" onClick={()=> {
-                setProj(itm.img)
-                setModal(prev => !prev)}}/></p>
-              <p>{itm.descr} <span className="edit__itm"onClick={()=> handleEdit(itm)}>...</span></p>
+                <span className="delete__itm"onClick={()=> handleDelete(itm.id)}>X</span>  
+                <p><img src={itm.img} alt="#" onClick={()=> {
+                    setProj(itm.img)
+                    setModal(prev => !prev)}}/></p>
+                <p>{itm.descr} <span className="edit__itm"onClick={()=> {
+                        setEdit(toggle => !toggle)
+                        setNewImage(itm.img)
+                        setDscrp(itm.descr)
+                        setID(itm)
+                        }}>...</span></p>
             </div>
           ))}
-          <div className={modal===false ? 'modal' : 'modal__active'}  onClick={()=> setModal(false)}>
-            <p><img src={proj} alt={proj} className="modal__img" /></p></div>
+          
+            <div className={modal===false ? 'modal' : 'modal__active'}  onClick={()=> setModal(false)}>
+                <p><img src={proj} alt={proj} className="modal__img" /></p>
+            </div>
         </div>
     )
 }
