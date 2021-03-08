@@ -2,7 +2,7 @@ import React from 'react'
 
 const Header = ()=> {
     return(
-        <header><h1>Showcase</h1></header>
+        <header><h1>Portfolio app_</h1></header>
     )
 }
 
