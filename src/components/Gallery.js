@@ -100,9 +100,8 @@ const Gallery = ()=> {
                 <textarea onChange={(e)=> setDscrp(e.target.value)}value={descr}></textarea>
                 
             </form>
-            {edit===false ? <button onClick={handleSubmit}>Add Image</button> : <button onClick={()=>{
-                handleEdit()
-                }}>Edit project</button>}
+            {edit===false ? <button onClick={handleSubmit}>Add Image</button> : <button onClick={handleEdit
+                }>Edit project</button>}
         
     
             {/* mapping over our 'db' here */}
